@@ -32,7 +32,7 @@ def students() -> str:
     format = "%Y-%m-%dT%H:%M:%SZ"
     utctime = datetime.datetime.utcnow().strftime(format)
     today = datetime.date.today().strftime("%A")
-    github_repo = "https://github.com/Itsfoss0/hgnx_internship"
+    github_repo = "https://github.com/Itsfoss0/hngx_internship"
 
     resp_data = {
         "slack_name": slack_name,
