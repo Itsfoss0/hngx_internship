@@ -19,7 +19,7 @@ def status() -> str:
     return jsonify({"status": "ok"})
 
 
-@api_view.route("/student", methods=["GET"], strict_slashes=False)
+@api_view.route("/", methods=["GET"], strict_slashes=False)
 def students() -> str:
     """
     Mock some students and send 'em over
