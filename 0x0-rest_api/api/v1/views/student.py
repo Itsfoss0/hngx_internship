@@ -39,7 +39,7 @@ def students() -> str:
         "current_day": today,
         "utc_time": utctime,
         "track": track,
-        "github_file_url": f"{github_repo}/0x0-rest_api",
+        "github_file_url": f"{github_repo}/tree/main/0x0-rest_api/api",
         "github_repo": github_repo,
         "status_code": 200
     }
