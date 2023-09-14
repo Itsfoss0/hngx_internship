@@ -9,10 +9,12 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
-class Person:
+class Person(Base):
     """
     Person Model
     """
     __tablename__ = "people"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(30), unique=True, nullable=False)
+    name = Column(String(130), unique=True, nullable=False)
+
+    
