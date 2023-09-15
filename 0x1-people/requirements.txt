@@ -8,7 +8,7 @@ idna==2.6
 itsdangerous==2.0.1
 Jinja2==2.11.2
 MarkupSafe==2.0.1
-mysqlclient==2.2.0
+mysqlclient
 requests==2.18.4
 six==1.16.0
 SQLAlchemy==2.0.20
