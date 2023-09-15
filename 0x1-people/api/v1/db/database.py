@@ -5,7 +5,6 @@
 
 """database and cursor objects module"""
 
-from dotenv import load_dotenv
 from MySQLdb import connect, cursors
 from os import getenv
 
