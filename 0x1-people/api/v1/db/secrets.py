@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 from os import getenv
+from dotenv import dotenv_values
 
-DB_NAME = getenv('DB_NAME', 'my_db')
-DB_USER = getenv('DB_USER')
-DB_PASSWORD = getenv('DB_PASSWORD')
-DB_HOST = getenv('DB_HOST', "127.0.0.1")
-DB_PORT = getenv('DB_PORT', 3306)
+config = dotenv_values()
+
+DB_NAME = config['DB_NAME']
+DB_USER = config['DB_USER']
+DB_PASSWORD = config['DB_PASSWORD']
+DB_HOST = config['DB_HOST']
+DB_PORT = 3306
+
+
+
