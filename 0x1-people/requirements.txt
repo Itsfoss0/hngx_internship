@@ -8,10 +8,10 @@ idna==2.6
 itsdangerous==2.0.1
 Jinja2==2.11.2
 MarkupSafe==2.0.1
-mysqlclient
 requests==2.18.4
 six==1.16.0
 SQLAlchemy==2.0.20
 typing-extensions==4.7.1
 urllib3==1.22
+mysql-connector-python
 Werkzeug==2.0.3
