@@ -15,11 +15,13 @@ from api.v1.utils import (
     get_user_by_id,
     get_user_by_name,
     delete_user_name,
-    delete_user_id
+    delete_user_id,
+    update_user,
+    all_users
 )
 
 
-@app_views.route('', methods = ['GET','POST', 'DELETE', 'PUT'], strict_slashes=False)
+@app_views.route('', methods = ['GET','POST'], strict_slashes=False)
 def handle_request():
     """
     Handle the request
@@ -33,6 +35,10 @@ def handle_request():
             return jsonify({"message": message}), 200
         except UserExistsAlready:
             return jsonify({"error": f"user {user_name} already exists"}), 409
+    elif request.method == "GET":
+        users = all_users()
+        return jsonify({"users": users})
+
 
 @app_views.route('/<int:user_id>', methods=['GET', 'PUT', 'DELETE'], strict_slashes=False)
 def get_user(user_id: int) -> str:
@@ -54,6 +60,14 @@ def get_user(user_id: int) -> str:
             return jsonify({"message": message}), 200
         except NoResultsFound:
             return jsonify({"error": f"User  with ID {user_id} not found"}), 404
+    elif request.method == "PUT":
+        try:
+            new_name = request.get_json().get('name', 'Smith')
+            message = update_user(user_id, new_name)
+            return jsonify({"message": message }), 200
+        except (InvalidOperation, NoResultsFound):
+            return jsonify({"error": "Not updated. Try again latter"}), 400
+
 
 @app_views.route('/<string:name>', methods=['GET', 'PUT', 'DELETE'], strict_slashes=False)
 def get_user_name(name: str) -> str:
@@ -75,3 +89,10 @@ def get_user_name(name: str) -> str:
             return jsonify({"message": message}), 200
         except NoResultsFound:
             return jsonify({"error": f"User {name} not found"}), 404
+    elif request.method == "PUT":
+        try:
+            new_name = request.get_json().get('name', 'Smith')
+            message = update_user(name, new_name)
+            return jsonify({"message": message }), 200
+        except (InvalidOperation, NoResultsFound):
+            return jsonify({"error": "Not updated. Try again latter"}), 400
