@@ -10,5 +10,7 @@ from api.v1.utils.utils import (
     get_user_by_id,
     get_user_by_name,
     delete_user_id,
-    delete_user_name
+    delete_user_name,
+    update_user,
+    all_users
 )

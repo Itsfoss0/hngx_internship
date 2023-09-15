@@ -7,6 +7,13 @@ from typing import Union
 from api.v1.db import cursor_object, db_object, DB_NAME
 from api.v1.exceptions import UserExistsAlready, InvalidOperation, NoResultsFound
 
+def all_users():
+    """
+    list all the users
+    """
+    cursor_object.execute("SELECT name, id FROM people")
+    return list(cursor_object.fetchall())
+
 def user_exists(name: str) -> bool:
     """
     Check if a user exists already
@@ -75,3 +82,25 @@ def delete_user_id(id: int) -> str:
         return f"user id {id} Deleted"
     except NoResultsFound:
         raise NoResultsFound
+
+
+def update_user(id_or_name: Union[int, str], new_name: str) -> str:
+    """
+    Update user details by ID or name.
+    """
+    try:
+        if isinstance(id_or_name, int):
+            exists = get_user_by_id(id_or_name)
+            cursor_object.execute('UPDATE people SET name = %s WHERE id = %s', (new_name, id_or_name))
+        elif isinstance(id_or_name, str):
+            if user_exists(id_or_name):
+                cursor_object.execute('UPDATE people SET name = %s WHERE name = %s', (new_name, id_or_name))
+            raise NoResultsFound
+        else:
+            raise InvalidOperation("Invalid input type")
+        db_object.commit()
+        return f"User updated to {new_name}"
+    except NoResultsFound:
+        raise NoResultsFound
+    except Exception:
+        raise InvalidOperation("Failed to update user")
