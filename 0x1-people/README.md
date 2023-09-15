@@ -8,6 +8,7 @@ It can dynamically handle parameters such as adding a person by name, retriving 
 - [Configuration](#configuration)
 - [Endpoints](#endpoints)
 - [Usage](#setup-and-usage)
+
 ## UML
 ![UML Diagram](./assets/uml.png)
 
@@ -15,7 +16,7 @@ It can dynamically handle parameters such as adding a person by name, retriving 
 Clone this repository from github to your local dev environment using the command
 
 ```
-git clone https://githhub.com/Itsfoss0/hngx_internship.git
+git clone https://github.com/Itsfoss0/hngx_internship.git
 ```
 Navigate to the `0x1-poeple` directory and install the reuired packages using the commmand
 
