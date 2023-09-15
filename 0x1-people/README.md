@@ -82,7 +82,7 @@ Status: 200 OK
 ```
 
 
-```
+```http
 PUT /api/4
 Content-Type: application/json
 Status: 200 OK
@@ -92,7 +92,7 @@ Status: 200 OK
 }
 ```
 
-```
+```http
 DELETE /api/4
 Content-Type: application/json
 Status: 200 OK
@@ -115,7 +115,7 @@ Status: 200 OK
 ```
 
 
-```
+```http
 PUT /api/john
 Content-Type: application/json
 Status: 200 OK
@@ -125,7 +125,7 @@ Status: 200 OK
 }
 ```
 
-```
+```http
 DELETE /api/doe
 Content-Type: application/json
 Status: 200 OK
