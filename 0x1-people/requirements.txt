@@ -15,4 +15,5 @@ typing-extensions==4.7.1
 urllib3==1.22
 mysql-connector-python
 Werkzeug==2.0.3
+python-dotenv
 mysqlclient
