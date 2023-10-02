@@ -1,0 +1,82 @@
+swagger: "2.0"
+info:
+  title: "Student API"
+  version: "1.0"
+  description: "API related to students"
+basePath: "/api/v1"
+paths:
+  /status/:
+    get:
+      summary: "Get API status"
+      description: "Determine the status of the API"
+      responses:
+        200:
+          description: "Status of the API"
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "ok"
+  /:
+    get:
+      summary: "Get list of students"
+      description: "Get a list of student mock objects"
+      parameters:
+        - name: slack_name
+          in: query
+          type: string
+          description: "Name of the student (default: Ebenezer Akhonya)"
+        - name: track
+          in: query
+          type: string
+          description: "Track of the student (default: backend)"
+      responses:
+        200:
+          description: "List of student mock objects"
+          schema:
+            type: object
+            properties:
+              slack_name:
+                type: string
+              current_day:
+                type: string
+              utc_time:
+                type: string
+                format: date-time
+              track:
+                type: string
+              github_file_url:
+                type: string
+              github_repo_url:
+                type: string
+              status_code:
+                type: integer
+                format: int32
+                example: 200
+  /today:
+    get:
+      summary: "Get the current day"
+      description: "Get the current day and UTC time"
+      responses:
+        200:
+          description: "Current day and UTC time"
+          schema:
+            type: object
+            properties:
+              day:
+                type: string
+              utc_time:
+                type: string
+                format: date-time
+              status_code:
+                type: integer
+                format: int32
+                example: 200
+  /forbiden:
+    get:
+      summary: "Forbidden"
+      description: "Return a 403 Forbidden response"
+    post:
+      summary: "Forbidden"
+      description: "Return a 403 Forbidden response"
